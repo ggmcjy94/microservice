@@ -1,7 +1,9 @@
 package com.example.userservice.jpa;
 
+import com.example.userservice.dto.UserDto;
 import lombok.Data;
 import lombok.Getter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
 
@@ -22,4 +24,8 @@ public class UserEntity {
     @Column(nullable = false, unique = true)
     private String encryptedPwd;
 
+    public void UpdateUser(UserDto userDto, BCryptPasswordEncoder passwordEncoder) {
+        name = userDto.getName();
+        encryptedPwd = passwordEncoder.encode(userDto.getPwd());
+    }
 }

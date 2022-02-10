@@ -9,4 +9,8 @@ public interface UserService {
 
     UserDto getUserByUserId(String userId);
     Iterable<UserEntity> getUserByAll();
+
+    UserDto UpdateUser(String userId, UserDto userDto);
+
+    void deleteUser(String userId);
 }

@@ -57,5 +57,22 @@ public class UserServiceImpl implements UserService{
         return userRepository.findAll();
     }
 
+    @Override
+    public UserDto UpdateUser(String userId, UserDto userDto) {
+        UserEntity userEntity = userRepository.findByUserId(userId);
+        if (userEntity == null) {
+            throw new UsernameNotFoundException("User is Not Found");
+        }
+        userEntity.UpdateUser(userDto, passwordEncoder);
+        UserEntity updatedUser = userRepository.save(userEntity);
+        return new ModelMapper().map(updatedUser, UserDto.class);
+    }
+
+    @Override
+    public void deleteUser(String userId) {
+        UserEntity user = userRepository.findByUserId(userId);
+        userRepository.delete(user);
+    }
+
 
 }
