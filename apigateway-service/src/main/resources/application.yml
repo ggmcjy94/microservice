@@ -25,6 +25,10 @@ spring:
           uri: lb://USER-SERVICE
           predicates:
             - Path=/user-service/** # 들어오는 조건식 user-service  path 설정
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/catalog-service/** # 들어오는 조건식 user-service  path 설정
 
         - id: first-service
           uri: lb://MY-FIRST-SERVICE # --> first-service로 들어오면 유레카 서버 에서 http://192.168.0.176:8001/ or 9091 일로 전송
