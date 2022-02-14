@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    config:
+      uri: http://127.0.0.1:8888
+      name: ecommerce # ecommerce.yml
+      #ecommerce.yml 이 git 에 commit 된 상태에서 config-service 에서 설정 후 연동
