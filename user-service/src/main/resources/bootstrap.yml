@@ -2,5 +2,11 @@ spring:
   cloud:
     config:
       uri: http://127.0.0.1:8888
-      name: ecommerce # ecommerce.yml
+      name: user-service
+      # config-service -> default application.yml
+      # user-service -> user-service.yml
       #ecommerce.yml 이 git 에 commit 된 상태에서 config-service 에서 설정 후 연동
+
+#  설정 하면 ${name}-dev.yml 로 읽혀짐
+#  profiles:
+#    active: dev
