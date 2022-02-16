@@ -70,10 +70,13 @@ spring:
           uri: lb://CATALOG-SERVICE
           predicates:
             - Path=/catalog-service/**
+
         - id: order-service
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/order-service/**
+
+
         - id: first-service
           uri: lb://MY-FIRST-SERVICE # --> first-service로 들어오면 유레카 서버 에서 http://192.168.0.176:8001/ or 9091 일로 전송
 #          uri: http://192.168.0.176:8001/
@@ -105,5 +108,5 @@ management:
       exposure:
         include: refresh, health, beans, httptrace, busrefresh
 
-token:
-  secret: user_token
+#token:
+#  secret: user_token

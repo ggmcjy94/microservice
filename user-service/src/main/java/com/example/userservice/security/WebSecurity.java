@@ -27,7 +27,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/actuator/**").permitAll();
         http.authorizeRequests().antMatchers("/**") // 모든 정보 권한 불통과
 //                .hasIpAddress("192.168.0.176") // my ip , ip 제한
-                .access("hasIpAddress('192.168.219.102') or hasIpAddress('192.168.0.176')")
+                .access("hasIpAddress('192.168.219.102') or hasIpAddress('192.168.0.176') or hasIpAddress('192.168.219.100')")
                 .and()
                 .addFilter(getAuthenticationFilter()); //필터를 통과 시킨 데이터 에게만 권한을 부여하고 작업 진행
         http.headers().frameOptions().disable();
