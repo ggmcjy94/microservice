@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService{
     private final RestTemplate restTemplate;
     private final OrderServiceClient orderServiceClient;
 
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = userRepository.findByEmail(username);
@@ -84,14 +85,16 @@ public class UserServiceImpl implements UserService{
 
         /* Using a feign client */
         /* feign exception handling*/
-        List<ResponseOrder> orderList = null;
-        try {
-            orderList = orderServiceClient.getOrders(userId);
-        } catch (FeignException ex) {
-            log.error(ex.getMessage());
-        }
+//        List<ResponseOrder> orderList = null;
+//        try {
+//            orderList = orderServiceClient.getOrders(userId);
+//        } catch (FeignException ex) {
+//            log.error(ex.getMessage());
+//        }
         /* end Using a feign client */
 
+        /*ErrorDecoder*/
+        List<ResponseOrder> orderList = orderServiceClient.getOrders(userId);
         userDto.setOrders(orderList);
         return userDto;
     }

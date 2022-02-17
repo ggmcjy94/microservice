@@ -12,6 +12,11 @@ spring:
     port: 5672
     username: guest
     password: guest
+  jpa:
+    properties:
+      hibernate:
+#        show_sql: true
+        format_sql: true
   h2:
     console:
       enabled: true
@@ -41,6 +46,7 @@ greeting:
 logging:
   level:
     com.example.userservice.client: DEBUG
+    org.hibernate.SQL: debug
 
 
 #token:
