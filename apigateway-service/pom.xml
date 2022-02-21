@@ -34,6 +34,13 @@
 			<version>0.9.1</version>
 		</dependency>
 
+
+		<!--micrometer-->
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>

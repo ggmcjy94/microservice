@@ -18,6 +18,7 @@ public class FeignErrorDecoder implements ErrorDecoder {
     public Exception decode(String methodKey, Response response) {
         switch (response.status()) {
             case 400: break;
+
             case 404:
                 if (methodKey.contains("getOrders")) {
                     return new ResponseStatusException(HttpStatus.valueOf(response.status()),

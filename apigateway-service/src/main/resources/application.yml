@@ -11,11 +11,13 @@ eureka:
 spring:
   application:
     name: apigateway-service
+
   rabbitmq:
     host: 127.0.0.1
     port: 5672
     username: guest
     password: guest
+
   cloud:
     gateway:
       default-filters:
@@ -75,7 +77,14 @@ spring:
           uri: lb://ORDER-SERVICE
           predicates:
             - Path=/order-service/**
-
+        - id: order-service
+          uri: lb://ORDER-SERVICE
+          predicates:
+            - Path=/order-service/actuator/**
+            - Method=GET
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/order-service/(?<segment>.*), /$\{segment}
 
         - id: first-service
           uri: lb://MY-FIRST-SERVICE # --> first-service로 들어오면 유레카 서버 에서 http://192.168.0.176:8001/ or 9091 일로 전송
@@ -106,7 +115,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: refresh, health, beans, httptrace, busrefresh
+        include: refresh, health, beans, httptrace, busrefresh, info, metrics, prometheus
 
 #token:
 #  secret: user_token
