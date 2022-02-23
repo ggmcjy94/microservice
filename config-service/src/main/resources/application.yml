@@ -20,7 +20,7 @@ spring:
         native:
           search-locations: file://${user.home}/Desktop/Work/native-file-repo
         git:
-          uri: https://github.com/ggmcjy94/spring-cloud-config.git
+          uri: https://github.com/ggmcjy94/spring-cloud-config
           # private 인 경우
 #          username:
 #          password:
