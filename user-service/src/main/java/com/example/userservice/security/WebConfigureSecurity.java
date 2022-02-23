@@ -39,7 +39,8 @@ public class WebConfigureSecurity extends WebSecurityConfigurerAdapter {
                 .access("hasIpAddress('192.168.219.102') or " +
                         "hasIpAddress('192.168.0.176') or " +
                         "hasIpAddress('192.168.219.100') or " +
-                        "hasIpAddress('192.168.0.17')")
+                        "hasIpAddress('192.168.0.17') or " +
+                        "hasIpAddress('172.18.0.15')")
                 .and()
 
                 .addFilter(getAuthenticationFilter()); //필터를 통과 시킨 데이터 에게만 권한을 부여하고 작업 진행

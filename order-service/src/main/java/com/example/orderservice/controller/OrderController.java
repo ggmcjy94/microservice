@@ -60,7 +60,7 @@ public class OrderController {
 
         // 주문 후 전송
         /* send this order to the kafka */
-//        kafkaProducer.send("example-catalog-topic", orderDto);
+        kafkaProducer.send("example-catalog-topic", orderDto);
 //        kafkaOrderProducer.send("orders", orderDto);
 
 //        ResponseOrder responseOrder = mapper.map(orderDto, ResponseOrder.class);
@@ -79,12 +79,12 @@ public class OrderController {
         });
 
         //zipkin 테스트 강제 오류 발생
-        try {
-            Thread.sleep(1000);
-            throw new Exception("장애발생");
-        } catch (InterruptedException e) {
-            log.warn(e.getMessage());
-        }
+//        try {
+//            Thread.sleep(1000);
+//            throw new Exception("장애발생");
+//        } catch (InterruptedException e) {
+//            log.warn(e.getMessage());
+//        }
 
         log.info("Add retrieved orders data");
 
